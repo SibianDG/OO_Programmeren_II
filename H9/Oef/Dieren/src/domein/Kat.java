@@ -18,9 +18,4 @@ public class Kat extends Dier{
     public int berekenLeeftijdVolgensMens(){
         return super.berekenLeeftijd()*7;
     }
-
-    @Override
-    public String toString(){
-        return String.format("%s%n", super.toString());
-    }
 }
