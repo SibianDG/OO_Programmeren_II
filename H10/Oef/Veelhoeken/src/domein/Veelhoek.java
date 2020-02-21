@@ -19,7 +19,7 @@ public class Veelhoek implements GriekseBenaming {
 
     @Override
     public String toString(){
-        return String.format("%s%nAantal hoeken = %d%n", getClass().getSimpleName(), aantalHoeken);
+        return String.format("%s%nAantal hoeken = %d%n%s%n", getClass().getSimpleName(), aantalHoeken, geefGriekseBenaming());
     }
 
     private void controleerAantalHoeken(int aantalHoeken){

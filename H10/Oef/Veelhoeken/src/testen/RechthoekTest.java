@@ -28,13 +28,13 @@ public class RechthoekTest
     @Test
     public void maakRechthoek_lengteMin2EnBreedte4_werptException()
     {
-    	Assertions.assertThrows(IllegalArgumentException.class, () -> new Rechthoek(4, -2));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Rechthoek(4, -2));
     }
 
     @Test
     public void maakRechthoek_lengte2EnBreedteMin4_werptException()
     {
-    	Assertions.assertThrows(IllegalArgumentException.class, () -> new Rechthoek(-4, 2));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Rechthoek(-4, 2));
     }
 
     @Test
