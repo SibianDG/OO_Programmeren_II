@@ -1,5 +1,7 @@
 package domein;
 
+import java.util.List;
+
 public class DomeinController {
 
     private VeelhoekRepository veelhoekRepository;
@@ -9,19 +11,20 @@ public class DomeinController {
     }
 
     public void voegVeelhoekToe(String[] gegevens){
-        //todo
+        veelhoekRepository.voegVeelhoekToe(gegevens);
     }
 
     public String geefVeelhoeken(){
         String result = "";
-        // todo
-        /*
-        for (Veelhoek veelhoek: veelhoekRepository.getVeelhoekenlijst()){
-            result += veelhoek;
+        List<GriekseBenaming> lijst = veelhoekRepository.getVeelhoekenlijst();
+        if (lijst.size() == 0){
+            return String.format("De lijst is leeg: geen veelhoeken beschikbaar.%n");
+        } else {
+            for (GriekseBenaming veelhoek: lijst){
+                result += String.format("%s%n", veelhoek.toString());
+            }
+            return result;
         }
-
-         */
-        return result;
     }
 
 }

@@ -11,15 +11,21 @@ public class VeelhoekRepository {
     }
 
     public void voegVeelhoekToe(String[] gegevens){
-        // todo
+        if (gegevens[0].equals("3")){
+            voegDriehoekToe(gegevens);
+        } else if (gegevens[0].equals("4")){
+            voegRechthoekToe(gegevens);
+        } else {
+            veelhoekenlijst.add(new Veelhoek(Integer.parseInt(gegevens[0])));
+        }
     }
 
     private void voegRechthoekToe(String[] gegevens){
-// todo
+        veelhoekenlijst.add(new Rechthoek(Integer.parseInt(gegevens[1]), Integer.parseInt(gegevens[2])));
     }
 
     private void voegDriehoekToe(String[] gegevens){
-// todo
+        veelhoekenlijst.add(new Driehoek(Integer.parseInt(gegevens[1]), Integer.parseInt(gegevens[2]), Integer.parseInt(gegevens[3])));
     }
 
     public List<GriekseBenaming> getVeelhoekenlijst() {
