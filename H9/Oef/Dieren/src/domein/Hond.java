@@ -42,7 +42,7 @@ public class Hond extends Dier {
 
     @Override
     public String toString(){
-        return String.format("%s, naam is %S%n", super.toString(), naam);
+        return String.format("%s, naam is %S", super.toString(), naam);
     }
 
     public String getNaam() {
