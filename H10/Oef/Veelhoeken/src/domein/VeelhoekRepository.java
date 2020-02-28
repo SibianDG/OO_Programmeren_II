@@ -21,7 +21,7 @@ public class VeelhoekRepository {
     }
 
     private void voegRechthoekToe(String[] gegevens){
-        veelhoekenlijst.add(new Rechthoek(Integer.parseInt(gegevens[1]), Integer.parseInt(gegevens[2])));
+        veelhoekenlijst.add(new Rechthoek(Double.parseDouble(gegevens[1]), Double.parseDouble(gegevens[2])));
     }
 
     private void voegDriehoekToe(String[] gegevens){
