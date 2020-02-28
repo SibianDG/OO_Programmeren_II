@@ -1,8 +1,6 @@
 package ui;
 
 import domein.DomeinController;
-import domein.Driehoek;
-import domein.Rechthoek;
 
 public class ConsoleApplicatie {
 

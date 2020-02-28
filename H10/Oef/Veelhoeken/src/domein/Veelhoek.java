@@ -1,6 +1,6 @@
 package domein;
 
-public class Veelhoek implements GriekseBenaming {
+public abstract class Veelhoek implements GriekseBenaming {
 
 
     private final int aantalHoeken;
@@ -10,11 +10,6 @@ public class Veelhoek implements GriekseBenaming {
         controleerAantalHoeken(aantalHoeken);
         this.aantalHoeken = aantalHoeken;
         aantal++;
-    }
-
-    @Override
-    public String geefGriekseBenaming() {
-        return null;
     }
 
     @Override

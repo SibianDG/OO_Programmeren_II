@@ -16,7 +16,7 @@ public class VeelhoekRepository {
         } else if (gegevens[0].equals("4")){
             voegRechthoekToe(gegevens);
         } else {
-            veelhoekenlijst.add(new Veelhoek(Integer.parseInt(gegevens[0])));
+            // veelhoekenlijst.add(new Veelhoek(Integer.parseInt(gegevens[0])));
         }
     }
 

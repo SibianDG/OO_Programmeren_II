@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class ConsoleApplicatie {
 
-    private DomeinController domeinController;
+    private final DomeinController domeinController;
 
     public ConsoleApplicatie(DomeinController domeinController) {
         this.domeinController = domeinController;

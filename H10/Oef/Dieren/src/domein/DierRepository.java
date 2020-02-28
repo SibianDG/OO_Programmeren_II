@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DierRepository {
-    private List<Dier> dieren;
+    private final List<Dier> dieren;
+    private final DierenMapper dierenMapper;
 
     public DierRepository() {
-        DierenMapper dierenMapper = new DierenMapper();
+        dierenMapper = new DierenMapper();
         dieren = dierenMapper.geefDieren();
     }
 

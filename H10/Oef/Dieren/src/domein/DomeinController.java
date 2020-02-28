@@ -6,7 +6,7 @@ import java.util.List;
 
 public class DomeinController {
 
-    private DierRepository dierRepository;
+    private final DierRepository dierRepository;
 
     public DomeinController() {
         dierRepository = new DierRepository();

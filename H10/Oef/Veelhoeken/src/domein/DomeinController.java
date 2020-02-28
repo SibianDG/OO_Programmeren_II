@@ -4,7 +4,7 @@ import java.util.List;
 
 public class DomeinController {
 
-    private VeelhoekRepository veelhoekRepository;
+    private final VeelhoekRepository veelhoekRepository;
 
     public DomeinController() {
         veelhoekRepository = new VeelhoekRepository();
