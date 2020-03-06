@@ -1,5 +1,7 @@
 package domein;
 
+import exceptions.DimensieException;
+
 public class Matrix {
 
     private int[][] getallen;
@@ -13,13 +15,14 @@ public class Matrix {
     }
 
     public Matrix(int[][] getallen) {
+        int aantalKol = -1;
         for (int[] rij: getallen) {
-            for (int kolom : rij){
-                if ( /* kolom == null || */ kolom < 0){
-                    //todo DimensieException
-                    throw new IllegalArgumentException("Elke rij van de matrix moet evenveel kolommen hebben.");
-                }
+            if (aantalKol == -1){
+                aantalKol = rij.length;
+            } else if (aantalKol != rij.length){
+                throw new DimensieException("lke rij van de matrix moet evenveel kolommen hebben.");
             }
+            this.getallen = getallen;
         }
     }
 
@@ -30,14 +33,17 @@ public class Matrix {
     public boolean isEenheidsMatrix(){
         int spilIndex = 0;
         for (int[] rij: getallen){
-            if (rij[spilIndex++] != 1){
+            if (rij[spilIndex] != 1){
                 return false;
             }
+            int indexCol = 0;
             for (int kolom : rij){
-                if (kolom != 0 ){
+                if (kolom != 0 && indexCol != spilIndex){
                     return false;
                 }
+                indexCol++;
             }
+            spilIndex++;
         }
         return true;
     }
@@ -50,34 +56,32 @@ public class Matrix {
                 }
             }
         } else {
-            throw new IllegalArgumentException("De dimensies van deze twee matrices zijn niet gelijk.");
+            throw new DimensieException("De dimensies van deze twee matrices zijn niet gelijk.");
         }
         return new Matrix(getallen);
     }
 
     public Matrix vermenigvuldig(Matrix matrix){
-        int[][] nieuweMatrix = new int[getallen.length][matrix.getGetallen()[0].length];
-        int rij = 0, kol = 0;
         if (getallen[0].length == matrix.getGetallen().length){
-            for (int i = 0; i < getallen.length; i++) {
-                int som = 0;
-                for (int j = 0; j < getallen[0].length; j++) {
-                    som += getallen[i][j]*matrix.getGetallen()[j][i];
-                }
-                nieuweMatrix[rij][kol] = som;
-                if (rij+1 == nieuweMatrix.length){
-                    rij = 0;
-                    kol++;
+            int rijenA = getallen.length;
+            int kolsInA = getallen[0].length;
+            int kolsInB = matrix.getGetallen()[0].length;
+            int[][] nieuweMatrix = new int[rijenA][kolsInB];
+            for (int i = 0; i < rijenA; i++) {
+                for (int j = 0; j < kolsInB; j++) {
+                    for (int k = 0; k < kolsInA; k++) {
+                        nieuweMatrix[i][j] = nieuweMatrix[i][j] + getallen[i][k] * matrix.getGetallen()[k][j];
+                    }
                 }
             }
             return new Matrix(nieuweMatrix);
         } else {
-            throw new IllegalArgumentException("Het aantal kolommen van de matrix komt niet overeen met het aantal rijen van de tweede matrix. Deze matrices kunnen niet vermenigvuldigd worden.");
+            throw new DimensieException("Het aantal kolommen van de matrix komt niet overeen met het aantal rijen van de tweede matrix. Deze matrices kunnen niet vermenigvuldigd worden.");
         }
     }
 
     public String geefBeschrijving(){
-        return String.format("%s %s, dimensie %d x %d%n", isVierkant() ? "Vierkante" : "", isEenheidsMatrix() ? "eenheidsmatrix" : "matrix", getallen.length, getallen[0].length);
+        return String.format("%s%s, dimensie %d x %d", isVierkant() ? "Vierkante " : "", isEenheidsMatrix() ? "eenheidsmatrix" : "matrix", getallen.length, getallen[0].length);
     }
 
     public int[] geefDimensies() {

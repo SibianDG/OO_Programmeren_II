@@ -8,7 +8,7 @@ import domein.Matrix;
 import exceptions.DimensieException;
 import java.util.Arrays;
 
-public class MatrixTest {
+public class MatrixTest2 {
 
     private Matrix m1, m2, m3, m4, m5;
 
@@ -69,7 +69,7 @@ public class MatrixTest {
                 Arrays.deepEquals((new int[][] { { 2, 2, 3 }, { 2, 4, 4 }, { 3, 4, 6 } }), m3.telOp(m4).getGetallen()));
     }
 
-    /*
+
     @Test
     public void telOp_3x2MatrixPlus3x3Matrix_geeftDimensieException() {
 
@@ -79,15 +79,12 @@ public class MatrixTest {
 
     }
 
-     */
-
     @Test
     public void vermenigvuldig_3x3MatrixMaal3x2Matrix_geeft3x2Matrix() {
         Assertions.assertTrue(Arrays.deepEquals((new int[][] { { -2, 1 }, { -2, 2 }, { -2, 3 } }),
                 m3.vermenigvuldig(m5).getGetallen()));
     }
 
-    /*
     @Test
     public void vermenigvuldig_3x2MatrixMaal3x3Matrix_geeftDimensieException() {
         Assertions.assertThrows(DimensieException.class, () -> {
@@ -95,8 +92,6 @@ public class MatrixTest {
         });
 
     }
-
-     */
 
     @Test
     public void geefBeschrijving_3x3EenheidsMatrix_geeftBijhorendeTekst() {

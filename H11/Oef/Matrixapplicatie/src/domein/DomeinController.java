@@ -23,7 +23,6 @@ public class DomeinController {
 
     public String geefProduct(int nummer){
         return gekozenMatrix.vermenigvuldig(matrixRepo.geefMatrix(nummer)).toString();
-
     }
 
     public String[] geefBeschrijvingMatrix(){
@@ -37,5 +36,9 @@ public class DomeinController {
 
     public void voegNieuweMatrixToe(int[][] getallen){
         matrixRepo.voegMatrixToe(new Matrix(getallen));
+    }
+
+    public Matrix getGekozenMatrix() {
+        return gekozenMatrix;
     }
 }

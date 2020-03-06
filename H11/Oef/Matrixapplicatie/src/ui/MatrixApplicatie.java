@@ -1,7 +1,11 @@
 package ui;
 
 import domein.DomeinController;
+import exceptions.DimensieException;
 
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class MatrixApplicatie {
@@ -17,13 +21,94 @@ public class MatrixApplicatie {
     }
 
     public void startApplicatie() {
-        toonHoofdMenu(false);
+        Scanner input = new Scanner(System.in);
+        int keuze = -1;
 
+        while (keuze != 0){
+            if (dc.getGekozenMatrix() == null){
+                toonHoofdMenu(false);
+                keuze = maakKeuzeUitLijst(0, 4);
+            } else {
+                toonHoofdMenu(true);
+                keuze = maakKeuzeUitLijst(0, 6);
+            }
+            boolean herhalen = true;
 
+            switch (keuze) {
+                case 1:
+                    int i = 0;
+                    for (String matrix : dc.geefBeschrijvingMatrix()){
+                        System.out.printf("%d.  %s%n", i++ +1, matrix);
+                    }
+                    break;
+                case 2:
+                    while (herhalen){
+                        try {
+                            System.out.println(dc.geefMatrix(input.nextInt()));
+                            herhalen = false;
+                        } catch (NumberFormatException nfe) {
+                            System.out.println("Kies getal");
+                        } catch (IllegalArgumentException iae) {
+                            System.out.println("Fout getal");
+                        }
+                    }
+                    break;
+                case 3:
+                    while (herhalen){
+                        try {
+                            System.out.print("Geef het aantal rijen: ");
+                            int aantalRijen = input.nextInt();
+                            int[][] intArray = new int[aantalRijen][aantalRijen];
+                            for (int j = 0; j < aantalRijen; j++) {
+                                for (int k = 0; k < aantalRijen; k++) {
+                                    intArray[j][k] = input.nextInt();
+                                    System.out.print(" ");
+                                }
+                            }
+                            dc.voegNieuweMatrixToe(intArray);
+                            herhalen = false;
+                        } catch (InputMismatchException ime){
+                            System.out.println("ime");
+                        } catch (DimensieException de){
+                            System.out.println(de.getMessage());
+                        }
+                    }
+                    break;
+                case 4:
+                    toonMatrixNaarKeuze();
+                    break;
+                case 5:
+                    while (herhalen){
+                        try {
+                            System.out.print("Geef het nummer van de matrix: ");
+                            dc.geefSom(input.nextInt());
+                            herhalen = false;
+                        } catch (NumberFormatException nfe) {
+                            System.out.println("Kies getal");
+                        } catch (IllegalArgumentException iae) {
+                            System.out.println("Fout getal");
+                        }
+                    }
+                    break;
+                case 6:
+                    while (herhalen){
+                        try {
+                            System.out.print("Geef het nummer van de matrix: ");
+                            dc.geefProduct(input.nextInt());
+                            herhalen = false;
+                        } catch (NumberFormatException nfe) {
+                            System.out.println("Kies getal");
+                        } catch (IllegalArgumentException iae) {
+                            System.out.println("Fout getal");
+                        }
+                    }
+                    break;
+            }
+        }
     }
 
     private void toonHoofdMenu(boolean bewerkingen) {
-        System.out.printf("Kies uit:%n0. Stop de applicatie%n1. Toon de beschrijvingen alle matrices%n2. Bekijk de matrix%n3. Voeg een nieuwe matrix toe%n4. Selecteer een matrix");
+        System.out.printf("Kies uit:%n0. Stop de applicatie%n1. Toon de beschrijvingen alle matrices%n2. Bekijk een matrix%n3. Voeg een nieuwe matrix toe%n4. Selecteer een matrix");
         if (bewerkingen){
             System.out.printf("%n5. Tel op bij de geselecteerde matrix%n6. Vermenigvuldig met de geselecteerde matrix");
         }
@@ -33,12 +118,12 @@ public class MatrixApplicatie {
         Scanner input = new Scanner(System.in);
         int keuze;
         do {
-            System.out.print("Uw keuze is: ");
+            System.out.printf("%nUw keuze is: ");
             keuze = input.nextInt();
             if (keuze > max || keuze < min){
                 throw new IllegalArgumentException(String.format("Geef een getal uit het interval [%d,%d].%nMaak opnieuw je keuze.%n", min, max));
             }
-            //todo
+
         } while (keuze < min || keuze > max);
         return keuze;
     }
