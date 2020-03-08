@@ -11,15 +11,12 @@ import java.util.Scanner;
 public class MatrixApplicatie {
 
     private DomeinController dc;
-    /*
+
     private final String ANSI_RESET="\u001B[0m";
     private final String ANSI_BLUE="\u001B[34m";
-     */
-    Scanner input;
 
     public MatrixApplicatie(DomeinController dc) {
         this.dc = dc;
-        input = new Scanner(System.in);
     }
 
     public void startApplicatie() {
@@ -27,35 +24,45 @@ public class MatrixApplicatie {
         int keuze = -1;
 
         while (keuze != 0){
-            if (dc.getGekozenMatrix() == null){
-                toonHoofdMenu(false);
-                keuze = maakKeuzeUitLijst(0, 4);
-            } else {
-                toonHoofdMenu(true);
-                keuze = maakKeuzeUitLijst(0, 6);
-            }
-            boolean herhalen = true;
+            try {
+                if (dc.getGekozenMatrix() == null){
+                    toonHoofdMenu(false);
+                    keuze = maakKeuzeUitLijst(0, 4);
+                } else {
+                    toonHoofdMenu(true);
+                    keuze = maakKeuzeUitLijst(0, 6);
+                }
 
-            switch (keuze) {
-                case 1:
-                    toonBeschrijvingMatrices();
-                    break;
-                case 2:
-                    toonMatrixNaarKeuze();
-                    break;
-                case 3:
-                    voegNieuweMatrixToe();
-                    break;
-                case 4:
-                    selecteerMatrixNaarKeuze();
-                    break;
-                case 5:
-                    toonSomVanMatrix();
-                    break;
-                case 6:
-                    toonProductVanMatrix();
-                    break;
+                switch (keuze) {
+                    case 1:
+                        toonBeschrijvingMatrices();
+                        break;
+                    case 2:
+                        toonMatrixNaarKeuze();
+                        break;
+                    case 3:
+                        voegNieuweMatrixToe();
+                        break;
+                    case 4:
+                        selecteerMatrixNaarKeuze();
+                        break;
+                    case 5:
+                        toonSomVanMatrix();
+                        break;
+                    case 6:
+                        toonProductVanMatrix();
+                        break;
+                    default:
+                        System.out.println(ANSI_BLUE + "Foute keuze, probeer opniuew");
+                }
+            } catch (IllegalArgumentException iae){
+                System.out.println(ANSI_BLUE + iae.getMessage());
+                System.out.print(ANSI_RESET);
+            } catch (Exception e){
+                System.out.println(ANSI_BLUE + e.getMessage());
+                System.out.print(ANSI_RESET);
             }
+
         }
     }
 
@@ -93,7 +100,6 @@ public class MatrixApplicatie {
             System.out.println(matrixString);
         }
         System.out.println();
-
     }
 
     private int geefNummerMatrix() {
@@ -106,9 +112,11 @@ public class MatrixApplicatie {
                 nummer = input.nextInt();
                 herhalen = false;
             } catch (NumberFormatException nfe) {
-                System.out.println("Kies getal");
+                System.out.println(ANSI_BLUE + "Kies getal");
+                System.out.print(ANSI_RESET);
             } catch (IllegalArgumentException iae) {
-                System.out.println("Fout getal");
+                System.out.println(ANSI_BLUE + "Fout getal");
+                System.out.print(ANSI_RESET);
             }
         }
         return nummer-1;
@@ -118,7 +126,9 @@ public class MatrixApplicatie {
         try {
             System.out.println(dc.geefSom(geefNummerMatrix()));
         } catch (DimensieException de){
-            System.err.println(de.getMessage());
+            System.err.println(ANSI_BLUE + de.getMessage());
+            System.out.print(ANSI_RESET);
+
         }
     }
 
@@ -126,11 +136,14 @@ public class MatrixApplicatie {
         try {
             System.out.println(dc.geefProduct(geefNummerMatrix()));
         } catch (DimensieException de){
-            System.err.println(de.getMessage());
+            System.err.println(ANSI_BLUE + de.getMessage());
+            System.out.print(ANSI_RESET);
+
         }
     }
 
     private void voegNieuweMatrixToe() {
+        Scanner input = new Scanner(System.in);
         boolean herhalen = true;
         while (herhalen){
             try {
@@ -148,9 +161,12 @@ public class MatrixApplicatie {
                 dc.voegNieuweMatrixToe(intArray);
                 herhalen = false;
             } catch (InputMismatchException ime){
-                System.out.println("ime");
+                System.out.println(ANSI_BLUE + ime.getMessage());
+                System.out.print(ANSI_RESET);
             } catch (DimensieException de){
-                System.out.println(de.getMessage());
+                System.out.println(ANSI_BLUE +de.getMessage());
+                System.out.print(ANSI_RESET);
+
             }
         }
 
