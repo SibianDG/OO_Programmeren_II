@@ -15,13 +15,15 @@ public class MatrixApplicatie {
     private final String ANSI_RESET="\u001B[0m";
     private final String ANSI_BLUE="\u001B[34m";
      */
+    Scanner input;
 
     public MatrixApplicatie(DomeinController dc) {
         this.dc = dc;
+        input = new Scanner(System.in);
     }
 
     public void startApplicatie() {
-        Scanner input = new Scanner(System.in);
+
         int keuze = -1;
 
         while (keuze != 0){
@@ -36,72 +38,22 @@ public class MatrixApplicatie {
 
             switch (keuze) {
                 case 1:
-                    int i = 0;
-                    for (String matrix : dc.geefBeschrijvingMatrix()){
-                        System.out.printf("%d.  %s%n", i++ +1, matrix);
-                    }
+                    toonBeschrijvingMatrices();
                     break;
                 case 2:
-                    while (herhalen){
-                        try {
-                            System.out.println(dc.geefMatrix(input.nextInt()));
-                            herhalen = false;
-                        } catch (NumberFormatException nfe) {
-                            System.out.println("Kies getal");
-                        } catch (IllegalArgumentException iae) {
-                            System.out.println("Fout getal");
-                        }
-                    }
-                    break;
-                case 3:
-                    while (herhalen){
-                        try {
-                            System.out.print("Geef het aantal rijen: ");
-                            int aantalRijen = input.nextInt();
-                            int[][] intArray = new int[aantalRijen][aantalRijen];
-                            for (int j = 0; j < aantalRijen; j++) {
-                                for (int k = 0; k < aantalRijen; k++) {
-                                    intArray[j][k] = input.nextInt();
-                                    System.out.print(" ");
-                                }
-                            }
-                            dc.voegNieuweMatrixToe(intArray);
-                            herhalen = false;
-                        } catch (InputMismatchException ime){
-                            System.out.println("ime");
-                        } catch (DimensieException de){
-                            System.out.println(de.getMessage());
-                        }
-                    }
-                    break;
-                case 4:
                     toonMatrixNaarKeuze();
                     break;
+                case 3:
+                    voegNieuweMatrixToe();
+                    break;
+                case 4:
+                    selecteerMatrixNaarKeuze();
+                    break;
                 case 5:
-                    while (herhalen){
-                        try {
-                            System.out.print("Geef het nummer van de matrix: ");
-                            dc.geefSom(input.nextInt());
-                            herhalen = false;
-                        } catch (NumberFormatException nfe) {
-                            System.out.println("Kies getal");
-                        } catch (IllegalArgumentException iae) {
-                            System.out.println("Fout getal");
-                        }
-                    }
+                    toonSomVanMatrix();
                     break;
                 case 6:
-                    while (herhalen){
-                        try {
-                            System.out.print("Geef het nummer van de matrix: ");
-                            dc.geefProduct(input.nextInt());
-                            herhalen = false;
-                        } catch (NumberFormatException nfe) {
-                            System.out.println("Kies getal");
-                        } catch (IllegalArgumentException iae) {
-                            System.out.println("Fout getal");
-                        }
-                    }
+                    toonProductVanMatrix();
                     break;
             }
         }
@@ -129,9 +81,7 @@ public class MatrixApplicatie {
     }
 
     private void toonMatrixNaarKeuze() {
-        System.out.print("Geef het nummer van de matrix: ");
-        selecteerMatrixNaarKeuze();
-        System.out.println(dc.geefMatrix(geefNummerMatrix()).toString());
+        System.out.println(dc.geefMatrix(geefNummerMatrix()));
     }
 
     private void selecteerMatrixNaarKeuze() {
@@ -139,22 +89,70 @@ public class MatrixApplicatie {
     }
 
     private void toonBeschrijvingMatrices() {
-        for (String matrxString : dc.geefBeschrijvingMatrix()){
-            System.out.println(matrxString);
+        for (String matrixString : dc.geefBeschrijvingMatrix()){
+            System.out.println(matrixString);
         }
+        System.out.println();
 
     }
 
     private int geefNummerMatrix() {
         Scanner input = new Scanner(System.in);
-        return input.nextInt();
+        int nummer = -1;
+        boolean herhalen = true;
+        while (herhalen){
+            try {
+                System.out.println("Geef nummer matrix");
+                nummer = input.nextInt();
+                herhalen = false;
+            } catch (NumberFormatException nfe) {
+                System.out.println("Kies getal");
+            } catch (IllegalArgumentException iae) {
+                System.out.println("Fout getal");
+            }
+        }
+        return nummer-1;
     }
 
     private void toonSomVanMatrix() {
+        try {
+            System.out.println(dc.geefSom(geefNummerMatrix()));
+        } catch (DimensieException de){
+            System.err.println(de.getMessage());
+        }
+    }
 
+    private void toonProductVanMatrix() {
+        try {
+            System.out.println(dc.geefProduct(geefNummerMatrix()));
+        } catch (DimensieException de){
+            System.err.println(de.getMessage());
+        }
     }
 
     private void voegNieuweMatrixToe() {
+        boolean herhalen = true;
+        while (herhalen){
+            try {
+                System.out.print("Geef het aantal rijen: ");
+                int aantalRijen = input.nextInt();
+                int[][] intArray = new int[aantalRijen][aantalRijen];
+                for (int j = 0; j < aantalRijen; j++) {
+                    System.out.printf("Geef rij %d: ", j+1);
+                    for (int k = 0; k < aantalRijen; k++) {
+                        //todo: op dezelfde lijn blijven
+                        intArray[j][k] = input.nextInt();
+                        System.out.print(" ");
+                    }
+                }
+                dc.voegNieuweMatrixToe(intArray);
+                herhalen = false;
+            } catch (InputMismatchException ime){
+                System.out.println("ime");
+            } catch (DimensieException de){
+                System.out.println(de.getMessage());
+            }
+        }
 
     }
 }

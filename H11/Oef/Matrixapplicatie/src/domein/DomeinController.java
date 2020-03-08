@@ -29,7 +29,7 @@ public class DomeinController {
         String[] strings = new String[matrixRepo.getMatrices().size()];
         int index = 0;
         for (Matrix matrix : matrixRepo.getMatrices()){
-            strings[index++] = matrix.geefBeschrijving();
+            strings[index] = String.format("%d.  %s", index++ +1, matrix.geefBeschrijving());
         }
         return strings;
     }
