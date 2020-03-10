@@ -1,0 +1,25 @@
+.label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-border-style: solid;
+    -fx-label-padding: 4px;
+}
+
+.hoera{
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #009900;
+    -fx-border-style: dotted;
+    -fx-label-padding: 15px;
+}
+
+#derde{
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ff0000;
+    -fx-border-style: dashed;
+    -fx-label-padding: 15px;
+
+}
+
