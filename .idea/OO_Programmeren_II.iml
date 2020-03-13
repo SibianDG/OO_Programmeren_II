@@ -4,10 +4,13 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/JavaFX/FXVoorbeelden/FXVoorbeeld1/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/H11/Oef/Matrixapplicatie2/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/H11/Oef/Matrixapplicatie2 - Feedback/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/H11/Oef/Matrixapplicatie2/src/testen" />
       <excludeFolder url="file://$MODULE_DIR$/H9/Oef/Dieren/src/testen" />
       <excludeFolder url="file://$MODULE_DIR$/H9/Oef/Veelhoeken/src/testen" />
     </content>
-    <orderEntry type="jdk" jdkName="11" jdkType="JavaSDK" />
+    <orderEntry type="jdk" jdkName="11.0.4" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library name="JUnit5.4">
