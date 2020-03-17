@@ -1,8 +1,11 @@
 package gui;
 
 import domein.EigenString;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -11,8 +14,8 @@ import javafx.scene.layout.VBox;
 public class Telscherm extends VBox
 {
     private EigenString eigenString;
-    private Label lblInvoer;
-    private TextField txfTekst;
+    private Label lblMessage,lblInvoer;
+    private TextField txfInvoer;
     private TextArea txaResultaat;
 
     public Telscherm()
@@ -22,17 +25,18 @@ public class Telscherm extends VBox
         this.setPadding(new Insets(25, 25, 25, 25));
 
         lblInvoer = new Label("Geef een zin in en druk op \"Enter\": ");
-        txfTekst = new TextField();
+        txfInvoer = new TextField();
         txaResultaat = new TextArea();
-        txaResultaat.setText(new EigenString(txfTekst.getText()).telKaraktersVolgensSoort());
 
-        this.getChildren().addAll(lblInvoer, txfTekst,txaResultaat);
+        //todo
+        //eigenString.setTekst(txfInvoer.getText());
+        //txaResultaat.setText(eigenString.telKaraktersVolgensSoort());
 
+        this.getChildren().addAll(lblInvoer, txfInvoer, txaResultaat);
+
+        lblMessage = new Label("Gelieve eerst een zin in te voeren");
+        lblMessage.setVisible(false);
+        this.getChildren().add(lblMessage);
     }
 
-    private void reset()
-    {
-        txfTekst.setText("");
-        txaResultaat.setText("");
-    }
 }

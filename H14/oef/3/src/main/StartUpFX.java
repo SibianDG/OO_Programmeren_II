@@ -1,21 +1,22 @@
 package main;
 
-import gui.Telscherm;
+import gui.RegistratieScherm;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 public class StartUpFX extends Application
 {
     @Override
     public void start(Stage primaryStage)
     {
-        Telscherm vb = new Telscherm();
+        RegistratieScherm vb = new RegistratieScherm();
 // vb is de root node, breedte is 300, hoogte is 275
 
         Scene scene = new Scene(vb, 300, 275);
         primaryStage.setScene(scene);
 
-        primaryStage.setTitle("Telen van de zin");
+        primaryStage.setTitle("Registratie");
         primaryStage.show();
 
         primaryStage.setResizable(false);
