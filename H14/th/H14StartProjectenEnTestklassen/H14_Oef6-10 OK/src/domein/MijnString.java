@@ -30,9 +30,20 @@ public class MijnString
     //wartaal -> Character
     public String maakWartaal(char oud,char nieuw)
     {
-        //todo -> hoe vervang je met een parameter in replaceAll
         String result = inhoud.replace(Character.toLowerCase(oud), Character.toLowerCase(nieuw));
         return result.replace(Character.toUpperCase(oud), Character.toUpperCase(nieuw));
+
+        //of
+        /*
+        char kleinOud = Character.toLowerCase(oud);
+        char kleinNieuw = Character.toLowerCase(nieuw);
+        char grootOud = Character.toUpperCase(oud);
+        char grootNieuw = Character.toUpperCase(nieuw);
+
+        String zin = inhoud.replaceAll(String.valueOf(kleinOud), String.valueOf(kleinNieuw));
+        zin = zin.replaceAll(String.valueOf(grootOud), String.valueOf(grootNieuw));
+        return zin;
+         */
 	}
 
       

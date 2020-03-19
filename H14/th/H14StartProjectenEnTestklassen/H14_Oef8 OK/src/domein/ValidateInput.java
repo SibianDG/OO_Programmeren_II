@@ -31,16 +31,12 @@ public class ValidateInput
        
 	public static boolean validateNaam(String naam)
 	{
-      		if (naam.matches("[a-zA-Z][a-zA-Z]+[a-zA-Z ]*")){
-      			//todo: deze werkt niet
-				// nodig om ook de letters met accenten goed te verwerken
-				String matchNaam = naam;
-				byte juistInBytes[] = matchNaam.getBytes(ISO_8859_1);
-				String juistMetAccenten = new String(juistInBytes, UTF_8);
-				return naam.matches(juistMetAccenten);
-			} else {
-      			return false;
-			}
+		String matchNaam;
+		matchNaam = "[A-Za-z][a-zיחטא]+(\\s[a-zיחטא]+)*";
+		// nodig om ook de letters met accenten goed te verwerken
+		byte juistInBytes[] = matchNaam.getBytes(ISO_8859_1);
+		String juistMetAccenten = new String(juistInBytes, UTF_8);
+		return naam.matches(juistMetAccenten);
 	}
  //Email moet beginnen met een letter en moet ייn @ bevatten
 //Voor @: email mag punten bevatten. De punten moet direct gevolgd    				
