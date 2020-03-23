@@ -3,9 +3,9 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/H14/oef/1/src/testen" />
-      <excludeFolder url="file://$MODULE_DIR$/H14/th/H14StartProjectenEnTestklassen/H14_Oef1-2-3/src/testen" />
-      <excludeFolder url="file://$MODULE_DIR$/H14/th/H14StartProjectenEnTestklassen/H14_Oef7/src/testen" />
+      <sourceFolder url="file://$MODULE_DIR$/H14/test" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/H14/th/H14StartProjectenEnTestklassen/H14_Oef1-2-3 OK/src/testen" />
+      <excludeFolder url="file://$MODULE_DIR$/JavaFX" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

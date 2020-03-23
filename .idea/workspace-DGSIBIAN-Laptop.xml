@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b1ba0690-e41d-4177-8b35-cfc504b55369" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/OO_Programmeren_II.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OO_Programmeren_II.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="module-info" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\sibia\OneDrive - Hogeschool Gent\1e bach\Semester2\OO_Programmeren_II\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ZAHxJ77FZzaWsduGL6rbx0nOzQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/H14/th/H14StartProjectenEnTestklassen/H14_Oef11/src" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="domein" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sibia\OneDrive - Hogeschool Gent\1e bach\Semester2\OO_Programmeren_II\H14\th\H14StartProjectenEnTestklassen\H14_Oef11\src" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sibia\OneDrive - Hogeschool Gent\1e bach\Semester2\OO_Programmeren_II\H14\th\H14_Voorbeelden\src" />
+      <recent name="C:\Users\sibia\OneDrive - Hogeschool Gent\1e bach\Semester2\OO_Programmeren_II" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Test (1)">
+    <configuration name="Oef3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ui.Oef3" />
+      <module name="OO_Programmeren_II" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StartUp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.StartUp" />
+      <module name="OO_Programmeren_II" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <module name="OO_Programmeren_II" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="domein.Test" />
+      <module name="OO_Programmeren_II" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domein.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MijnStringTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OO_Programmeren_II" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="testen.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="testen" />
+      <option name="MAIN_CLASS_NAME" value="testen.MijnStringTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.StartUp" />
+      <item itemvalue="Application.Oef3" />
+      <item itemvalue="Application.Test" />
+      <item itemvalue="JUnit.MijnStringTest" />
+      <item itemvalue="Application.Test (1)" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test (1)" />
+        <item itemvalue="JUnit.MijnStringTest" />
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.StartUp" />
+        <item itemvalue="Application.Oef3" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b1ba0690-e41d-4177-8b35-cfc504b55369" name="Default Changelist" comment="" />
+      <created>1584275223969</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584275223969</updated>
+      <workItem from="1584275226375" duration="820000" />
+      <workItem from="1584276166183" duration="25095000" />
+      <workItem from="1584369370415" duration="272000" />
+    </task>
+    <task id="LOCAL-00001" summary="H14 startprojecten">
+      <created>1584305754964</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1584305754964</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="H14 startprojecten" />
+    <option name="LAST_COMMIT_MESSAGE" value="H14 startprojecten" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="651" y="319" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1584369405177">
+      <screen x="0" y="0" width="1603" height="862" />
+    </state>
+    <state x="651" y="319" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1603.862@0.0.1603.862" timestamp="1584369405177" />
+    <state width="1559" height="223" key="GridCell.Tab.0.bottom" timestamp="1584369641862">
+      <screen x="0" y="0" width="1603" height="862" />
+    </state>
+    <state width="1559" height="223" key="GridCell.Tab.0.bottom/0.0.1603.862@0.0.1603.862" timestamp="1584369641862" />
+    <state width="1559" height="223" key="GridCell.Tab.0.center" timestamp="1584369641862">
+      <screen x="0" y="0" width="1603" height="862" />
+    </state>
+    <state width="1559" height="223" key="GridCell.Tab.0.center/0.0.1603.862@0.0.1603.862" timestamp="1584369641862" />
+    <state width="1559" height="223" key="GridCell.Tab.0.left" timestamp="1584369641862">
+      <screen x="0" y="0" width="1603" height="862" />
+    </state>
+    <state width="1559" height="223" key="GridCell.Tab.0.left/0.0.1603.862@0.0.1603.862" timestamp="1584369641862" />
+    <state width="1559" height="223" key="GridCell.Tab.0.right" timestamp="1584369641862">
+      <screen x="0" y="0" width="1603" height="862" />
+    </state>
+    <state width="1559" height="223" key="GridCell.Tab.0.right/0.0.1603.862@0.0.1603.862" timestamp="1584369641862" />
+  </component>
+</project>

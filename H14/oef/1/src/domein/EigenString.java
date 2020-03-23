@@ -32,6 +32,7 @@ public class EigenString {
             if (string.matches("[A-Z]")){
                 hoofdLetter++;
             }
+            //feedback of via Character
         }
         stringBuilder.append("In de zin \" ").append(tekst).append(" \" ").append(System.lineSeparator()).append(System.lineSeparator());
         stringBuilder.append(String.format("%20s%20s%n", "Soort karakter", "Aantal"))
