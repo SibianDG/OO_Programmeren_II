@@ -27,16 +27,24 @@ public class Telscherm extends VBox
         lblInvoer = new Label("Geef een zin in en druk op \"Enter\": ");
         txfInvoer = new TextField();
         txaResultaat = new TextArea();
-
-        //todo
-        //eigenString.setTekst(txfInvoer.getText());
-        //txaResultaat.setText(eigenString.telKaraktersVolgensSoort());
-
-        this.getChildren().addAll(lblInvoer, txfInvoer, txaResultaat);
-
         lblMessage = new Label("Gelieve eerst een zin in te voeren");
         lblMessage.setVisible(false);
-        this.getChildren().add(lblMessage);
+        txfInvoer.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent evt) {
+                String tekst = txfInvoer.getText();
+                if (tekst.isEmpty()){
+                    lblMessage.setVisible(true);
+                } else  {
+                    lblMessage.setVisible(false);
+                    eigenString = new EigenString(tekst);
+                    txaResultaat.setText(eigenString.telKaraktersVolgensSoort());
+                }
+
+            }
+        });
+
+        this.getChildren().addAll(lblInvoer, txfInvoer, txaResultaat, lblMessage);
     }
 
 }

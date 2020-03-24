@@ -68,10 +68,15 @@ public class DetailPaneel extends GridPane
         txfHouder.setEditable(false);
         txfSaldo.setEditable(false);
 
-        txfBedrag.setOnAction(event ->
-                controller.stortOp(indexVanDeRekening, Integer.parseInt(txfBedrag.getText())));
-        // TODO: 24/03/2020 Bedrag verwijnt niet opnieuw
-    
+        txfBedrag.setOnAction(new EventHandler<ActionEvent>() {
+              @Override
+              public void handle(ActionEvent event) {
+                  controller.stortOp(indexVanDeRekening, Integer.parseInt(txfBedrag.getText()));
+                  txfBedrag.setText("");
+                  update();
+              }
+          });
+
     }
 
     public void update(){

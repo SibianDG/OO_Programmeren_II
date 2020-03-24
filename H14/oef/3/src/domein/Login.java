@@ -29,7 +29,10 @@ public class Login {
         if (gebruikersnaam == null){
             throw new IllegalArgumentException("Gelieve een gebruikersnaam in te voeren!");
         }
-        if (controleerLengte(gebruikersnaam, 12) && gebruikersnaam.matches("[A-Z][^ ]{3,} [^ ]{7,}\\d]")){
+        if (!controleerLengte(gebruikersnaam, 12)) {
+            throw new IllegalArgumentException("Gebruikersnaam te kort");
+        }
+        if (gebruikersnaam.matches("[A-Z][^ ]{3,} [^ ]{7,}\\d+")){
             this.gebruikersnaam = gebruikersnaam;
         } else {
             throw new IllegalArgumentException("Foute gebruikersnaam");
