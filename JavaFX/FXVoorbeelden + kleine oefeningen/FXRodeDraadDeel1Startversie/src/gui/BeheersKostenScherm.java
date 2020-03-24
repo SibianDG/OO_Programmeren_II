@@ -29,7 +29,7 @@ public class BeheersKostenScherm extends VBox {
             cboTitels.getItems().add(x);
         }
         // TODO: 23/03/2020 combobox met index?
-        //cboTitels.setOnAction(new KlasseDieOpComboBoxReageert(cboTitels, dc));
+        cboTitels.setOnAction(new KlasseDieOpComboBoxReageert(cboTitels, this));
         lblUitleg = new Label("Uitleg:");
         txaUitleg = new TextArea();
         lblKost = new Label("Berheerskosten:");

@@ -16,6 +16,6 @@ public class KlasseDieOpComboBoxReageert implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-        bks.update(1);
+        bks.update(cboTitels.getSelectionModel().getSelectedIndex());
     }
 }
