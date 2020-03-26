@@ -1,5 +1,6 @@
 package main;
 
+import domein.Login;
 import gui.RegistratieScherm;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -10,7 +11,8 @@ public class StartUpFX extends Application
     @Override
     public void start(Stage primaryStage)
     {
-        RegistratieScherm vb = new RegistratieScherm();
+        Login login = new Login();
+        RegistratieScherm vb = new RegistratieScherm(login);
 // vb is de root node, breedte is 300, hoogte is 275
 
         Scene scene = new Scene(vb, 300, 275);

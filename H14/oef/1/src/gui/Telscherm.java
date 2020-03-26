@@ -5,10 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
 public class Telscherm extends VBox
@@ -32,13 +29,15 @@ public class Telscherm extends VBox
         txfInvoer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent evt) {
-                String tekst = txfInvoer.getText();
-                if (tekst.isEmpty()){
-                    lblMessage.setVisible(true);
-                } else  {
-                    lblMessage.setVisible(false);
-                    eigenString = new EigenString(tekst);
-                    txaResultaat.setText(eigenString.telKaraktersVolgensSoort());
+                try {
+                    eigenString = new EigenString(txfInvoer.getText());
+                    txaResultaat.appendText(eigenString.telKaraktersVolgensSoort());
+                } catch (IllegalArgumentException iae){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Fout");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Tekst moet ingevuld zijn.");
+                    alert.showAndWait();
                 }
 
             }

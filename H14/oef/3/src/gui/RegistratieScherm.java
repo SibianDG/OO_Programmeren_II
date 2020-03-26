@@ -17,47 +17,73 @@ public class RegistratieScherm extends VBox
     private TextField txfGebruikersnaam,txfWachtwoord, txfWachtwoord2;
     private Login login;
 
-    public RegistratieScherm()
+    public RegistratieScherm(Login login)
     {
+        this.login = login;
         buildGui();
-
     }
 
 
-    private void txfGebruikersnaamAction(ActionEvent event){
-        //wat moet er hier in?
-    }
-
-    private void txfWachtwoordAction(ActionEvent event){
-        try {
-            login = new Login(txfGebruikersnaam.getText(), txfWachtwoord.getText());
-        } catch (IllegalArgumentException iae){
+    private void txfGebruikersnaamAction(ActionEvent event)
+    {
+        try
+        {
+            login.setGebruikersnaam(txfGebruikersnaam.getText());
+            txfWachtwoord.requestFocus();
+        }
+        catch (IllegalArgumentException iae)
+        {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Fout");
+            alert.setHeaderText(null);
             alert.setContentText(iae.getMessage());
-            alert.show();
+            alert.showAndWait();
+            txfGebruikersnaam.selectAll();
         }
     }
-
-    private void txfWachtwoord2Action(ActionEvent event){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Fout");
-        try {
-            // 2x new login?
-            login = new Login(txfGebruikersnaam.getText(), txfWachtwoord.getText());
-            if (!txfWachtwoord2.getText().equals(login.getWachtwoord())){
-                alert.setContentText("Gelieve het wachtwoord correct te bevestigen.");
-            } else {
-                alert.setContentText("Alle ingevoerde gegevens werden aanvaard");
-            }
-        } catch (IllegalArgumentException iae){
+    private void txfWachtwoordAction(ActionEvent event)
+    {
+        try
+        {
+            login.setWachtwoord(txfWachtwoord.getText());
+            txfWachtwoord2.requestFocus();
+        }
+        catch (IllegalArgumentException iae)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Fout");
+            alert.setHeaderText(null);
             alert.setContentText(iae.getMessage());
-            alert.show();
+            alert.showAndWait();
+            txfWachtwoord.selectAll();
         }
-
-        alert.show();
     }
+    private void txfWachtwoord2Action(ActionEvent event)
+    {
+        try
+        {
+            String invoer = txfWachtwoord2.getText();
+            if (invoer == null || invoer.isEmpty())
+                throw new IllegalArgumentException("Gelieve het wachtwoord te bevestigen");
+            if (!invoer.equals(login.getWachtwoord()))
+                throw new IllegalArgumentException("Gelieve het wachtwoord correct te bevestigen");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("OK");
+            alert.setHeaderText(null);
+            alert.setContentText("Alle ingevoerde gegevens worden aanvaard");
+            alert.showAndWait();
+        }
+        catch (IllegalArgumentException iae)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Fout");
+            alert.setHeaderText(null);
+            alert.setContentText(iae.getMessage());
+            alert.showAndWait();
+            txfWachtwoord2.selectAll();
+        }
+    }
+
 
     private void buildGui(){
         this.setAlignment(Pos.CENTER_LEFT);
@@ -70,6 +96,7 @@ public class RegistratieScherm extends VBox
         txfWachtwoord = new TextField();
         lblWachtwoord2 = new Label("Bevestig wachtwoord: ");
         txfWachtwoord2 = new TextField();
+        txfGebruikersnaam.setOnAction(event -> txfGebruikersnaamAction(event));
         txfWachtwoord.setOnAction(event -> txfWachtwoordAction(event));
         //txfWachtwoord.setOnAction(this::txfWachtwoordAction);
         txfWachtwoord2.setOnAction(event -> txfWachtwoord2Action(event));

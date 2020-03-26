@@ -15,7 +15,7 @@ public class StartUpFX extends Application
         Scene scene = new Scene(vb, 300, 275);
         primaryStage.setScene(scene);
 
-        primaryStage.setTitle("Telen van de zin");
+        primaryStage.setTitle("Tellen van de zin");
         primaryStage.show();
 
         primaryStage.setResizable(false);
