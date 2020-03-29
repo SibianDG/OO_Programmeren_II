@@ -43,15 +43,29 @@ public class Letter3PermutatiesScherm extends VBox
             @Override
             public void handle(ActionEvent evt)
             {
-                MijnString mijnString = new MijnString(txfInvoer.getText());
-                txaArray.setText(mijnString.geefAllePermutatiesVanDrieMetArray());
-                txaBuilder.setText(mijnString.geefAllePermutatiesVanDrieMetStringBuilder());
-             }
+                lblMessage.setVisible(false);
+                try
+                {
+                    mijnString = new MijnString(txfInvoer.getText());
+                    txaArray.setText(mijnString.geefAllePermutatiesVanDrieMetArray());
+                    txaBuilder.setText(mijnString.geefAllePermutatiesVanDrieMetStringBuilder());
+                }
+                catch (NullPointerException | IllegalArgumentException | StringIndexOutOfBoundsException e )
+                {
+                    lblMessage.setVisible(true);
+                    reset();
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
         });   
   }
      
     private void reset()
     {
+        txfInvoer.setText("");
         txaArray.setText("");
         txaBuilder.setText("");
     } 

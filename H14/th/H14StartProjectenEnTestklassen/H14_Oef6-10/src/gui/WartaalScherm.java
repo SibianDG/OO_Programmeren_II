@@ -54,18 +54,32 @@ public class WartaalScherm extends GridPane
             @Override
             public void handle(ActionEvent evt)
             {
-               MijnString mijnString = new MijnString(txfInvoer.getText());
-               txfWartaal.setText(mijnString.maakWartaal(txfLetter1.getText().charAt(0), txfLetter2.getText().charAt(0)));
-             }
+                lblMessage.setVisible(false);
+                try
+                {
+                    mijnString = new MijnString(txfInvoer.getText());
+                    txfWartaal.setText(mijnString.maakWartaal(
+                            txfLetter1.getText().charAt(0),
+                            txfLetter2.getText().charAt(0)));
+
+                }
+                catch (NullPointerException | IllegalArgumentException | StringIndexOutOfBoundsException e )
+                {
+                    lblMessage.setVisible(true);
+                    reset();
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
         });
            
   }
      
     private void reset()
     {
-       txfInvoer.setText("");
-       txfLetter1.setText("");
-       txfLetter2.setText("");
-       txfWartaal.setText("");
+        txfInvoer.setText("");
+        txfWartaal.setText("");
     }
 }

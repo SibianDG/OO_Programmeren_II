@@ -71,11 +71,21 @@ public class DetailPaneel extends GridPane
         txfBedrag.setOnAction(new EventHandler<ActionEvent>() {
               @Override
               public void handle(ActionEvent event) {
-                  controller.stortOp(indexVanDeRekening, Integer.parseInt(txfBedrag.getText()));
-                  txfBedrag.setText("");
-                  update();
-              }
-          });
+                      try {
+                          String tekstBedrag = txfBedrag.getText();
+                          int bedrag = Integer.parseInt(tekstBedrag);
+                          controller.stortOp(indexVanDeRekening, bedrag);
+                          update();
+                      } catch (NumberFormatException e) {
+                          Alert boodschap = new Alert(Alert.AlertType.WARNING);
+                          boodschap.setTitle("Er gaat iets fout...");
+                          boodschap.setContentText
+                                  ("Bedrag moet als geheel getal ingegeven worden!");
+                          boodschap.showAndWait();
+                          txfBedrag.requestFocus();
+                      }
+                  }
+              });
 
     }
 
@@ -84,6 +94,7 @@ public class DetailPaneel extends GridPane
         txfRekeningNr.setText(gegevens[0]);
         txfSaldo.setText(gegevens[1]);
         txfHouder.setText(gegevens[2]);
+        txfBedrag.setText("");
     }
 
     public void setIndexVanDeRekening(int indexVanDeRekening) {

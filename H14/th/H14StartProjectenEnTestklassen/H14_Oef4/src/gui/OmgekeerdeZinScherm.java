@@ -12,30 +12,30 @@ import javafx.scene.layout.VBox;
 
 public class OmgekeerdeZinScherm extends VBox
 {
-    private MijnString mijnString; 
+    private MijnString mijnString;
     private Label lblMessage,lblInvoer;
     private TextField txfInvoer,txfKeerom, txfPalin;
     private Button btnKeerom, btnPalin;
-     
-     public OmgekeerdeZinScherm()
-     {
-        this.setAlignment(Pos.CENTER_LEFT);       
+
+    public OmgekeerdeZinScherm()
+    {
+        this.setAlignment(Pos.CENTER_LEFT);
         this.setSpacing(10);
         this.setPadding(new Insets(25, 25, 25, 25));
-        
+
         lblInvoer = new Label("GEEF INVOERSTRING: ");
         txfInvoer = new TextField();
         btnKeerom = new Button("KEER OM");
         txfKeerom = new TextField();
         btnPalin = new Button("IS PALINDROOM");
         txfPalin = new TextField();
-        
+
         this.getChildren().addAll(lblInvoer, txfInvoer,btnKeerom,txfKeerom,btnPalin,txfPalin);
-        
+
         lblMessage = new Label("Gelieve eerst een zin in te voeren");
         lblMessage.setVisible(false);
         this.getChildren().add(lblMessage);
-        
+
         btnKeerom.setOnAction(new EventHandler<ActionEvent>()
         {
             @Override
@@ -57,9 +57,9 @@ public class OmgekeerdeZinScherm extends VBox
                     e.printStackTrace();
                 }
 
-             }
+            }
         });
-        
+
         btnPalin.setOnAction(new EventHandler<ActionEvent>()
         {
             @Override
@@ -70,7 +70,8 @@ public class OmgekeerdeZinScherm extends VBox
                 try
                 {
                     mijnString = new MijnString(txfInvoer.getText());
-                    txfPalin.setText(mijnString.isPalindroom()? "Waar" : "Fout");
+                    txfPalin.setText ( mijnString.isPalindroom()?
+                            "is een palindroom": "is geen palindroom");
                 }
                 catch (NullPointerException | IllegalArgumentException | StringIndexOutOfBoundsException e )
                 {
@@ -79,17 +80,17 @@ public class OmgekeerdeZinScherm extends VBox
                 }
                 catch (Exception e)
                 {
-                   e.printStackTrace();
+                    e.printStackTrace();
                 }
 
             }
         });
-  }
-     
+    }
+
     private void reset()
     {
         txfInvoer.setText("");
         txfKeerom.setText("");
         txfPalin.setText("");
-    }     
+    }
 }
