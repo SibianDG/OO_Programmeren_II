@@ -1,0 +1,10 @@
+.titel {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: green;
+    -fx-label-padding: 4px;
+}
+
+.fout {
+    -fx-background-color: yellow;
+}

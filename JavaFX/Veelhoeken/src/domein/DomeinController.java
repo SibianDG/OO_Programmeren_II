@@ -17,7 +17,7 @@ public class DomeinController {
     public String geefVeelhoeken(){
         String result = "";
         List<GriekseBenaming> lijst = veelhoekRepository.getVeelhoekenlijst();
-        if (lijst.size() == 0){
+        if (lijst.isEmpty()){
             return String.format("De lijst is leeg: geen veelhoeken beschikbaar.%n");
         } else {
             for (GriekseBenaming veelhoek: lijst){

@@ -5,28 +5,24 @@ import gui.VeelhoekScherm;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ui.ConsoleApplicatie;
 
 public class StartUp extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception
+    public void start(Stage primaryStage)
     {
 
         DomeinController dc = new DomeinController();
-        System.out.println("test");
-        VeelhoekScherm vs = new VeelhoekScherm(dc);
-        Scene scene = new Scene(vs, 400, 400);
+        VeelhoekScherm root = new VeelhoekScherm(dc);
+        Scene scene = new Scene(root, 400, 400);
+        scene.getStylesheets().add("style.css");
 
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-        primaryStage.setTitle("Welkom");
+        primaryStage.setTitle("Veelhoekapplicatie");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
     public static void main(String[] args) {
-        /*ConsoleApplicatie consoleApplicatie = new ConsoleApplicatie(new DomeinController());
-        consoleApplicatie.startApplicatie(); */
         launch(args);
     }
 }
