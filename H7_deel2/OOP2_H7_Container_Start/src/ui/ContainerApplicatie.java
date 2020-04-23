@@ -19,6 +19,7 @@ public class ContainerApplicatie {
         Arrays.sort(containers);
         System.out.println("Containers bij natuurlijk sorteren.");
         System.out.println(Arrays.toString(containers));
+        System.out.println();
         
         // Stap 2
         Arrays.sort(containers, new Comparator<Container>() {
@@ -33,6 +34,7 @@ public class ContainerApplicatie {
         });
         System.out.println("Containers bij sorteren op massa.");
         System.out.println(Arrays.toString(containers));
+        System.out.println();
 
 
         // Stap 3
@@ -48,12 +50,22 @@ public class ContainerApplicatie {
         });
         System.out.println("Containers bij sorteren op eigenaar.");
         System.out.println(Arrays.toString(containers));
+        System.out.println();
 
 
         // Stap 4
         Container nieuweContainer = new Container("Antwerpen", 70, 75, 8564);
-        // TODO: 22/04/2020
-        System.out.println(Arrays.toString(containers));
-
+        boolean gevonden = false;
+        for (Container container: containers){
+            if (container.compareTo(nieuweContainer) == 0) {
+                gevonden = true;
+                break;
+            }
+        }
+        if (gevonden){
+            System.out.println("Fout: De container werd reeds toegevoegd aan de array.");
+        } else {
+            System.out.println("De container is nog niet toegevoegd aan de array.");
+        }
     }
 }

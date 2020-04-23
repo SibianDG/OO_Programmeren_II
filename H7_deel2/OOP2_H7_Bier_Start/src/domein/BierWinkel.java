@@ -29,9 +29,11 @@ public class BierWinkel
    
     public List<Bier> geefAlleBierenMetMinAlcoholPercentage(double percentage)
     {
-        // TODO: 22/04/2020  
+        // TODO: 22/04/2020
         List<Bier> minstensgraden = new ArrayList<>();
-        
+        for (Bier bier: bieren){
+            bier
+        }
         return minstensgraden;
     }
 

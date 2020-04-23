@@ -52,7 +52,7 @@ public class Container implements Comparable<Container> {
         return massa;
     }
     
-    public int getSerialNumber() {
+    private int getSerialNumber() {
         return serialNumber;
     }
 
@@ -69,7 +69,7 @@ public class Container implements Comparable<Container> {
 
     @Override
     public int compareTo(Container o) {
-        return this.volume-o.getVolume();
+        return this.serialNumber-o.getSerialNumber();
     }
 }
 
