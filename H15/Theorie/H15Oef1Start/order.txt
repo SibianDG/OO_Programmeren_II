@@ -1,0 +1,5 @@
+Janssens  appels 50 40
+Peeters  peren 5 7,5
+Gunter kiwi 100 100
+Klaas citroen 10 20
+Pjotr speculoos 30 20
