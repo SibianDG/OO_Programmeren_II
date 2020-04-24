@@ -2,6 +2,7 @@ package domein;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import persistentie.BierMapper;
 //dit is de repository
@@ -23,16 +24,20 @@ public class BierWinkel
     
     public long geefAantalBierenMetMinAlcoholPercentage(double percentage)
     {
-
-        // TODO: 22/04/2020  
+        long aantalBierenMetMinAlcoholPercentage = 0;
+        for (Bier bier: bieren){
+            if (bier.getAlcoholgehalte() >= percentage)
+                aantalBierenMetMinAlcoholPercentage++;
+        }
+        return aantalBierenMetMinAlcoholPercentage;
     }
    
     public List<Bier> geefAlleBierenMetMinAlcoholPercentage(double percentage)
     {
-        // TODO: 22/04/2020
         List<Bier> minstensgraden = new ArrayList<>();
         for (Bier bier: bieren){
-            bier
+            if (bier.getAlcoholgehalte() >= percentage)
+                minstensgraden.add(bier);
         }
         return minstensgraden;
     }
@@ -40,22 +45,23 @@ public class BierWinkel
     //Bier met hoogst aantal graden
     public Bier geefBierMetHoogsteAlcoholPercentage()
     {
-        /*TO DO*/
-    	return null;
+        List<Bier> sorted = new ArrayList<>(sorteerOpAlcoholGehalteEnNaam());
+        return sorted.get(0);
     }
 
     //Bier met laagst aantal graden
     public Bier geefBierMetLaagsteAlcoholPercentage()
     {
-        /*TO DO*/
-    	return null;
+        List<Bier> sorted = new ArrayList<>(sorteerOpAlcoholGehalteEnNaam());
+        return sorted.get(sorted.size()-1);
     }
     
     //Hulpmethode voor bier met hoogste/laagste alcoholgehalte
     public Bier[] sorteerVolgensAlcoholGehalte()
     {
-        /*TO DO*/
-    	return null;
+        List<Bier> sorted = new ArrayList<>(sorteerOpAlcoholGehalteEnNaam());
+        Bier[] bierenArray = new Bier[sorted.size()];
+        return sorted.toArray(bierenArray);
     }
 
     /*Zorg ervoor dat het resultaat gesorteerd wordt op alcoholgehalte van hoog naar laag, 
@@ -63,15 +69,27 @@ public class BierWinkel
      */
     public List<Bier> sorteerOpAlcoholGehalteEnNaam()
     {
-//        /*TO DO*/
-    	return null;
+        List<Bier> sorted = new ArrayList<>(bieren);
+        sorted.sort(new Comparator<Bier>() {
+            @Override
+            public int compare(Bier o1, Bier o2) {
+                int res = Double.compare(o1.getAlcoholgehalte(), o2.getAlcoholgehalte());
+                if (res == 0)
+                    return o1.getNaam().compareTo(o2.getNaam());
+                return res;
+            }
+        });
+        return sorted;
 
     }   
     
     public List<String> geefNamenBieren()
     {
-    	/*TO DO*/
-    	return null;
+    	List<String> strings = new ArrayList<>();
+    	for (Bier bier: bieren){
+    	    strings.add(bier.getNaam());
+        }
+    	return strings;
     }
 
 }
