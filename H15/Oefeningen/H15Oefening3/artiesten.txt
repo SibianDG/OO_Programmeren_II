@@ -1,0 +1,9 @@
+CLASSIC Tom Jones
+ROCK    Triggerfinger
+VLAAMS  Will Tura
+POP Britney Spears
+POP Milk Inc
+ELEKTRO David Guetta
+ELEKTRO Skrillex
+VLAAMS  Betty
+VLAAMS  Christoff	

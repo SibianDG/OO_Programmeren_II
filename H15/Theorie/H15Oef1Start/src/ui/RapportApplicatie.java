@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.Formatter;
 import java.util.FormatterClosedException;
 import java.util.Scanner;
@@ -13,8 +14,8 @@ import java.util.Scanner;
 public class RapportApplicatie
 {
 
-    public static final String INNAAM = "../order.txt";
-    public static final String UITNAAM = "../korting.txt";
+    public static final String INNAAM = "order.txt";
+    public static final String UITNAAM = "korting.txt";
     public static final int MINAANTAL = 11;
     private Scanner input;
     private Formatter output;
@@ -29,13 +30,20 @@ public class RapportApplicatie
 
     private void openFiles()
     {
-        try {
+        try
+        {
             input = new Scanner(Files.newInputStream(Paths.get(INNAAM)));
-            output = new Formatter((Files.newOutputStream(Paths.get(UITNAAM))));
-        } catch (InvalidPathException ie){
-            System.out.println("Error fiding path");
-        } catch (IOException filesnotfound){
-            System.out.println("Error reading file");
+            output = new Formatter(Files.newOutputStream(Paths.get(UITNAAM)));
+        }
+        catch (InvalidPathException ie)
+        {
+            System.err.println("Error finding file.");
+            System.exit(1);
+        }
+        catch (IOException ex)
+        {
+            System.err.println("Error reading file.");
+            System.exit(1);
         }
     }
 
@@ -45,10 +53,11 @@ public class RapportApplicatie
             while (input.hasNext()){
                 OrderRecord orderRecord = new OrderRecord(input.next(), input.next(), input.nextInt(), input.nextDouble());
                 if (orderRecord.getAantal() > MINAANTAL){
-                    output.format("%s %s %d %.2f",
-                            orderRecord.getNaam(), orderRecord.getProduct(), orderRecord.getAantal(), (orderRecord.getAantal()*orderRecord.getPrijs()*.95));
+                    output.format("%s %s %d %.2f%n",
+                            orderRecord.getNaam(), orderRecord.getProduct(), orderRecord.getAantal(), orderRecord.getPrijs()*.95);
                 }
             }
+            System.out.println("Klaar");
         } catch (FormatterClosedException formatterClosedException){
             System.out.println("Error writing file.");
         }
@@ -56,8 +65,14 @@ public class RapportApplicatie
 
     private void closeFiles()
     {
-         if (input != null){
-             input.close();
-         }
+        if (output != null)
+        {
+            output.close();
+        }
+
+        if (input != null)
+        {
+            input.close();
+        }
     }
 }

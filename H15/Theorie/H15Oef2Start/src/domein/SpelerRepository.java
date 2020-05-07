@@ -10,7 +10,6 @@ public class SpelerRepository
 
     public SpelerRepository()
     {
-
         spelerLijst = new ArrayList<>();
     }   
 }
