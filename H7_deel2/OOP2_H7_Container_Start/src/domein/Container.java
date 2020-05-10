@@ -2,7 +2,7 @@ package domein;
 
 import java.util.Objects;
 
-public class Container implements Comparable<Container> {
+public class Container {
 
     private String eigenaar;
     private int volume;
@@ -68,8 +68,20 @@ public class Container implements Comparable<Container> {
     }
 
     @Override
-    public int compareTo(Container o) {
-        return this.serialNumber-o.getSerialNumber();
+    public int hashCode() {
+        return Objects.hash(serialNumber);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Container other = (Container) obj;
+        return serialNumber == other.serialNumber;
     }
 }
 

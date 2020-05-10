@@ -1,8 +1,9 @@
 package domein;
 
 import java.util.Comparator;
+import java.util.Objects;
 
-public class Bier implements Comparator<Bier>
+public class Bier implements Comparable<Bier>
 {
     private String naam, soort, brouwerij;
     private double alcoholgehalte, beoordeling;
@@ -75,8 +76,49 @@ public class Bier implements Comparator<Bier>
     }
 
     @Override
-    public int compare(Bier o1, Bier o2) {
-        // TODO: 22/04/2020 ?
-        return Double.compare(o1.getAlcoholgehalte(), o2.getAlcoholgehalte());
+    public int hashCode()
+    {
+        int hash = 5;
+        hash = 13 * hash + Objects.hashCode(this.naam);
+        hash = 13 * hash + Objects.hashCode(this.soort);
+        hash = 13 * hash + Objects.hashCode(this.brouwerij);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (this == obj)
+        {
+            return true;
+        }
+        if (obj == null)
+        {
+            return false;
+        }
+        if (getClass() != obj.getClass())
+        {
+            return false;
+        }
+        final Bier other = (Bier) obj;
+        if (!Objects.equals(this.naam, other.naam))
+        {
+            return false;
+        }
+        if (!Objects.equals(this.soort, other.soort))
+        {
+            return false;
+        }
+        if (!Objects.equals(this.brouwerij, other.brouwerij))
+        {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int compareTo(Bier o)
+    {
+        return Double.compare(this.alcoholgehalte, o.alcoholgehalte);
     }
 }
