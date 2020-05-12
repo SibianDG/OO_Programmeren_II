@@ -4,6 +4,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.List;
 import java.util.Scanner;
@@ -58,13 +59,17 @@ public class DomeinController implements Serializable
     }
 
     public String[] deSerialiseerObjectPerObject(String s) {
+        List<String> data = new ArrayList<>();
         try (ObjectInputStream input = new ObjectInputStream(Files.newInputStream(Paths.get(s)))){
-            return (String[]) input.readObject();
-            // TODO: 06/05/2020  
+            while (true){
+                data.add((String)input.readObject());
+            }
+        } catch (EOFException eofe){
+            //igonore
         } catch (IOException | ClassNotFoundException ioe){
             System.out.println(ioe.getMessage());
         }
-        return null;
+        return data.toArray(new String[0]);
     }
 
     public String[] leesTekstBestand(String s) {
@@ -72,7 +77,8 @@ public class DomeinController implements Serializable
             Scanner input = new Scanner(Files.newInputStream((Paths.get(s))));
             while (input.hasNext()){
                 //Speler speler = new Speler(input.nextInt(), input.next(), input.next());
-                // TODO: 06/05/2020 Wapens?
+                // TODO: 06/05/2020 15/05 oplossing
+
             }
             input.close();
         } catch (InvalidPathException ie) {
@@ -89,7 +95,6 @@ public class DomeinController implements Serializable
     public String[] deSerialiseerVolledigeLijst(String s) {
         try (ObjectInputStream input = new ObjectInputStream(Files.newInputStream(Paths.get(s)))){
             return (String[]) input.readObject();
-            // TODO: 06/05/2020
         } catch (IOException | ClassNotFoundException ioe){
             System.out.println(ioe.getMessage());
         }

@@ -2,6 +2,7 @@ package persistentie;
 
 import domein.Artiest;
 import domein.Festival;
+import domein.MuziekGenre;
 import domein.Podium;
 
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class FestivalMapper {
         try {
             Scanner input = new Scanner(Files.newInputStream((Paths.get(naamBestand))));
             while (input.hasNext()){
-                // TODO: 07/05/2020  
+                // TODO: 07/05/2020
                 //Artiest artiest = new Artiest(input.next(), input.nextLine());
                 //artiests.add(artiest);
             }
@@ -42,7 +43,6 @@ public class FestivalMapper {
 
     public void schrijfFestivalWeg(Festival f){
         try (ObjectOutputStream outputStream = new ObjectOutputStream(Files.newOutputStream(Paths.get("festival.ser")))){
-            // TODO: 07/05/2020 controleer
             outputStream.writeObject(f);
         } catch (IOException e) {
             e.printStackTrace();

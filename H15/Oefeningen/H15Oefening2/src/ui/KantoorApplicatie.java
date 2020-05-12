@@ -66,11 +66,8 @@ public class KantoorApplicatie {
     }
 
     private void serialiseer(List<Kantoor> lijst, String uitvoerBestand){
-        // TODO: 07/05/2020 controleren
         try (ObjectOutputStream outputStream = new ObjectOutputStream(Files.newOutputStream(Paths.get(uitvoerBestand)))){
-            for (Kantoor kantoor: lijst){
-                outputStream.writeObject(kantoor);
-            }
+            outputStream.writeObject(lijst);
         } catch (IOException e) {
             e.printStackTrace();
         }
