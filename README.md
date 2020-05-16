@@ -1,5 +1,5 @@
 # OO_Programmeren_II
-Persoonlijke oplossingen Programmeren II
+Personal solutions Programmeren II. Real solutions on Chamilo.
 
 ## Usage
 Go to your Chapter, your part or exercise name, go to **src** and your package.
