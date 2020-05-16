@@ -1,7 +1,7 @@
 package domein;
 
 
-public class DoucheBak 
+public class DoucheBak
 {
     private int lengte; 
     private int breedte; 

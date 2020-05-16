@@ -1,5 +1,6 @@
 package main;
 
+import domein.BonusCode;
 import domein.DomeinController;
 import gui.BonusCodeSchermController;
 import javafx.application.Application;
@@ -13,10 +14,10 @@ public class StartUp extends Application
     @Override
     public void start(Stage primaryStage) 
     {
-       BonusCodeSchermController root = new BonusCodeSchermController(new DomeinController());
-        
+        BonusCodeSchermController root = new BonusCodeSchermController(new DomeinController());
+
         Scene scene = new Scene(root);
-        
+
         primaryStage.setTitle("BonusCodeScherm");
         primaryStage.setScene(scene);
         primaryStage.show();

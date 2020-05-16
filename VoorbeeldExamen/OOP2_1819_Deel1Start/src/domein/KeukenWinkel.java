@@ -12,7 +12,6 @@ public class KeukenWinkel extends Winkel {
 
     @Override
     public double geefJaarlijkseBelasting() {
-        return 0;
-        //return super.geefJaarlijkseBelasting();
+        return 2500;
     }
 }

@@ -59,7 +59,28 @@ public class BonusCodeSchermController extends GridPane
     @FXML
     private void btnControleer(ActionEvent event)
     {
-        // TO DO
+        if (txfEen.getText() == null || txfEen.getText().isEmpty() || gekozenItem == null)
+            lblMessage.setText("Maak eerst je keuze!");
+        else {
+            try {
+                if (gekozenItem.equals("Een")) {
+                    dc.registreerBonusCode(txfEen.getText());
+                    lblMessage.setText("Correcte ingave bonusCode.");
+                } else if (gekozenItem.equals("Reeks")) {
+                    if (txfTwee.getText() == null || txfTwee.getText().isEmpty())
+                        lblMessage.setText("Maak eerst je keuze!");
+                    dc.registreerReeksBonusCodes(txfEen.getText(), txfTwee.getText());
+                    if (dc.zijnOpeenvolgendeCodes()){
+                        lblMessage.setText("Correcte ingave reeks bonusCodes.");
+                    } else {
+                        lblMessage.setText("Ingegeven reeks is niet correct.");
+                    }
+                }
+            } catch (IllegalArgumentException iae) {
+                lblMessage.setText(iae.getMessage());
+            }
+
+        }
     }
 
     @FXML

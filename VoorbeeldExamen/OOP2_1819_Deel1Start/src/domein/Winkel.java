@@ -2,6 +2,9 @@ package domein;
 
 import exceptions.SectorMisMatchException;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public abstract class Winkel implements TeBetalenBelasting {
     
     private String naam;
@@ -34,12 +37,17 @@ public abstract class Winkel implements TeBetalenBelasting {
     }
 
     private void setSector(String sector) {
+        Pattern p1 = Pattern.compile("^[A-Z]{3}\\d{4}$");
+        Pattern p2 = Pattern.compile("^[a-z]{5}\\d{2,}$");
+
         if (sector == null || sector.isEmpty()){
             throw new SectorMisMatchException();
-        } else if (!sector.matches("^[A-Z]{3}[0-9]{4}$") || !sector.matches("^[a-z]{5}[0-9]{2,}$")){
+        } else if (p1.matcher(sector).find() || p2.matcher(sector).find()){
+            this.sector = sector;
+        } else {
+            System.out.println("fout");
             throw new SectorMisMatchException();
         }
-        this.sector = sector;
     }
 
     private void setOmzet(int omzet) {
@@ -55,8 +63,27 @@ public abstract class Winkel implements TeBetalenBelasting {
         this.classificatie = classificatie;
     }
 
+    public String getNaam() {
+        return naam;
+    }
+
+    public String getVestigingsplaats() {
+        return vestigingsplaats;
+    }
+
+    public String getSector() {
+        return sector;
+    }
+
+    public int getOmzet() {
+        return omzet;
+    }
+
     @Override
     public String toString() {
         return String.format("%s %s; in %s; sector = %s, omzet = %d", getClass().getName(), naam, vestigingsplaats, sector, omzet);
     }
+
+    @Override
+    public abstract double geefJaarlijkseBelasting();
 }

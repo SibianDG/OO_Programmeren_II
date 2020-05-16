@@ -18,9 +18,6 @@ public class DomeinController {
     public boolean zijnOpeenvolgendeCodes() {
         return BonusCode.zijnOpeenvolgendeBonusCodes(
                 bonusCode1, bonusCode2);
-
     }
-
-   
 
 }
