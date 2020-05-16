@@ -7,10 +7,7 @@ import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class KantoorApplicatie {
     public static void main(String[] args) {
@@ -24,13 +21,31 @@ public class KantoorApplicatie {
 
     private List<Kantoor> leesKantoren(String invoerBestand){
         List<Kantoor> kantoors = new ArrayList<>();
-        try {
-            Scanner input = new Scanner(Files.newInputStream((Paths.get(invoerBestand))));
+        try (Scanner input = new Scanner(Files.newInputStream((Paths.get(invoerBestand))))) {
             while (input.hasNext()){
-                Kantoor kantoor = new Kantoor(input.nextInt(), input.next(), input.nextLine());
-                kantoors.add(kantoor);
+                try
+                {
+                    int postcode = input.nextInt();
+                    String gemeente = input.next();
+                    String adres = input.nextLine();
+                    Kantoor kk = new Kantoor(postcode, gemeente, adres);
+                    kantoors.add(kk);
+                }
+                catch (InputMismatchException e)
+                {
+                    System.err.println("Type gegevens klopt niet!");
+                }
+                catch (NoSuchElementException e)
+                {
+                    System.err.println("Er ontbreken gegevens!");
+                }
+                catch (IllegalArgumentException e)
+                {
+                    System.err.println(e.getMessage());
+                }
             }
-            input.close();
+            // auto close -> try with resources
+            //input.close();
         } catch (InvalidPathException ie) {
             System.err.println("Error finding file.");
             System.exit(1);
@@ -52,7 +67,7 @@ public class KantoorApplicatie {
                 System.out.println("Voer een getal in!");
             }
         } while (postcode > 9999 || postcode < 1000);
-        return postcode / 1000;
+        return postcode;
     }
 
     private List<Kantoor> filter(List<Kantoor> kantoren, int eersteCijfer){

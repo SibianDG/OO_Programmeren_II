@@ -2,13 +2,15 @@ package domein;
 
 import persistentie.FestivalMapper;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Festival {
+public class Festival implements Serializable {
     private FestivalMapper festivalMapper;
     private List<Podium> podia;
 
     public Festival() {
+        festivalMapper = new FestivalMapper();
         initPodia();
     }
 
@@ -21,11 +23,12 @@ public class Festival {
     }
 
     private void initPodia(){
-        //podia = festivalMapper.maakPodia();
+        List<Artiest> artiesten = festivalMapper.leesArtiestenUit("artiesten.txt");
+        podia = festivalMapper.maakPodia("podia.txt", artiesten);
     }
 
     public void schrijfWeg(){
-
+        festivalMapper.schrijfFestivalWeg(this);
     }
 
     @Override

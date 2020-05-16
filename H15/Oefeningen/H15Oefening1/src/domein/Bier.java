@@ -63,9 +63,7 @@ public class Bier
     @Override
     public String toString()
     {
-        String stringNaam = this.naam;
-        stringNaam = stringNaam.replaceAll("\\s", "_");
-        return String.format("%s", naam);
+        return String.format("%s", this.naam.replaceAll("\\s", "_"));
     }
 
     private void controleerLeeg(String gegeven, String fout){

@@ -1,6 +1,9 @@
 package domein;
 
-public class Artiest {
+import java.io.Serializable;
+
+public class Artiest implements Serializable {
+
     private final String naam;
     private MuziekGenre genre;
 
@@ -14,7 +17,7 @@ public class Artiest {
 
     @Override
     public String toString() {
-        return String.format("Artiest %s speelt het genre %s", naam, genre);
+        return String.format("%s %s speelt het genre %s", this.getClass().getSimpleName(), naam, genre);
     }
 
     public String getNaam() {

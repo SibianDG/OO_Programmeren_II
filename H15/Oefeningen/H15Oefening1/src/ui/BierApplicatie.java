@@ -29,6 +29,7 @@ public class BierApplicatie {
         try {
             Scanner input = new Scanner(Files.newInputStream((Paths.get("C:\\ProgrammerenII\\H15\\Oefeningen\\H15Oefening1\\bieren.txt"))));
             while (input.hasNext()){
+                // TODO: 16/05/2020 2e try
                 Bier bier = new Bier(input.next(), input.next(), input.nextDouble(), input.nextDouble(), input.nextLine());
                 if (bier.getAlcoholgehalte() >= min){
                     biers.add(bier);
@@ -41,17 +42,18 @@ public class BierApplicatie {
         } catch (IOException ex) {
             System.err.println("Error reading file.");
             System.exit(1);
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
         }
         return biers;
     }
 
     private void toonEnSchrijf(List<Bier> lijst, String bestand){
-        try {
-            Formatter output = new Formatter(Files.newOutputStream(Paths.get(bestand)));
+        try (Formatter f = new Formatter(Files.newOutputStream(Paths.get(bestand)))) {
             for (Bier bier: lijst){
-                output.format("%s%n", bier.getNaam());
+                f.format("%s%n", bier.getNaam());
             }
-            output.close();
+            f.close();
         } catch (InvalidPathException ie) {
             System.err.println("Error finding file.");
             System.exit(1);

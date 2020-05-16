@@ -81,7 +81,7 @@ public abstract class Winkel implements TeBetalenBelasting {
 
     @Override
     public String toString() {
-        return String.format("%s %s; in %s; sector = %s, omzet = %d", getClass().getName(), naam, vestigingsplaats, sector, omzet);
+        return String.format("%s %s; in %s; sector = %s, omzet = %d", getClass().getSimpleName(), naam, vestigingsplaats, sector, omzet);
     }
 
     @Override
