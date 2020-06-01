@@ -30,6 +30,8 @@ public class WinkelMapper {
                 String lijn = input.nextLine();
 
                 String[] lijnArray = lijn.split("-");
+                if (lijnArray.length != 6)
+                    throw new IllegalArgumentException("Niet 6 lang");
                 if (lijnArray[0].equals("b")){
                     winkels.add(new BadkamerWinkel(lijnArray[1], lijnArray[2], lijnArray[3], Integer.parseInt(lijnArray[4]), Classificatie.valueOf(lijnArray[5])));
                 } else if (lijnArray[0].equals("k")){
@@ -49,7 +51,7 @@ public class WinkelMapper {
         } catch (SectorMisMatchException e){
             System.err.println(e.getMessage());
         }
-        return null;
+        return winkels;
     }
 
     public void serialiseerWinkels(List<Winkel> winkels, String naamBestand){

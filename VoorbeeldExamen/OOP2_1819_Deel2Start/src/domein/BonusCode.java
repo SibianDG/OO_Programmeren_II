@@ -54,10 +54,10 @@ public class BonusCode
         StringBuilder stringBuilder = new StringBuilder("A");
         Random rg = new Random();
        for (int i = 0; i < 5; i++) {
-           stringBuilder.append(rg.nextInt(10));
+           stringBuilder.append((char)rg.nextInt(10));
        }
        for (int i = 0; i < 3; i++) {
-           stringBuilder.append(rg.nextInt(26)+65);
+           stringBuilder.append((char)rg.nextInt(26)+65);
        }
        this.code = stringBuilder.toString();
    }

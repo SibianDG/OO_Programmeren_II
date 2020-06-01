@@ -3,7 +3,7 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/AllesSamen/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/VoorbeeldExamen/OOP2_1819_Deel2Start/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/H14/oef/1/src/testen" />
       <excludeFolder url="file://$MODULE_DIR$/H14/th/H14StartProjectenEnTestklassen/H14_Oef1-2-3/src/testen" />
       <excludeFolder url="file://$MODULE_DIR$/H14/th/H14StartProjectenEnTestklassen/H14_Oef7/src/testen" />

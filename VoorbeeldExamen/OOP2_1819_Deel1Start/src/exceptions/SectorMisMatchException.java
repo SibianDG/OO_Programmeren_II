@@ -1,6 +1,6 @@
 package exceptions;
 
-public class SectorMisMatchException extends IllegalArgumentException {
+public class SectorMisMatchException extends Exception {
 
     public SectorMisMatchException() {
         this("Verkeerde sector");

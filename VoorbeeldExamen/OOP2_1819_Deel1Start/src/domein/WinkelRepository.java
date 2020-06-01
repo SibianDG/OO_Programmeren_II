@@ -1,5 +1,6 @@
 package domein;
 
+import exceptions.SectorMisMatchException;
 import persistentie.WinkelMapper;
 
 import java.util.List;
@@ -9,16 +10,18 @@ public class WinkelRepository {
     private List<Winkel> winkels;
     private WinkelMapper winkelMapper;
 
-    public WinkelRepository() {
+    public WinkelRepository() throws SectorMisMatchException {
         winkelMapper = new WinkelMapper();
-        winkels = getWinkels();
+        winkels = winkelMapper.leesTekstBestandWinkels("winkels_in.txt");
     }
 
     public Winkel geefWinkel(String naamWinkel){
         Winkel gevondenWinkel = null;
         for (Winkel winkel: winkels){
-            if (winkel.getNaam().equals(naamWinkel))
+            if (winkel.getNaam().equals(naamWinkel)) {
                 gevondenWinkel = winkel;
+                break;
+            }
         }
         return gevondenWinkel;
     }

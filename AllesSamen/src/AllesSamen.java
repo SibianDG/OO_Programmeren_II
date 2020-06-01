@@ -1,9 +1,13 @@
 public class AllesSamen {
 
 
-//    /* TODO ZORG ER VOOR DAT HET PROGRAMMA IN GUI EN CUI NIET CRASHT! */
+//    /* TODO ZORG ER VOOR DAT HET PROGRAMMA IN GUI EN CUI NIET CRASHT! *
+//      OOK IN STARTUP!
+private final DomeinController dc;
 //
 //   /* TODO H9-10 */
+//
+//
 //
 //            super.toString()
 //    getClass().getSimpleName()
@@ -14,7 +18,11 @@ public class AllesSamen {
 //switch (DierSoort.values()[keuze-1]){
 //        case KAT:
 //
-///* TODO package exceptions; */
+///* TODO package exceptions;
+// eigen exception. Opgave: checked exception -> Exception is superclass and Illigal
+//
+// */
+//
 //
 //            public class BuitenBereikException extends IllegalArgumentException{
 //                public BuitenBereikException() {
@@ -74,6 +82,8 @@ public class AllesSamen {
 //                        //getallen weergeven op het scherm
 //                        toonArray("oplossing : 6 6 6 6 6 4 4 8 8 8", getallen);
 //                        Arrays.asList(namen).indexOf(naam)
+//
+//            return gevonden.toArray(new DoucheBak[gevonden.size()]);
 //
 //                        /* TODO JavaFX */
 //

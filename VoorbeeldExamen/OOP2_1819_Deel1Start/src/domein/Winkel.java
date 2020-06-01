@@ -13,11 +13,11 @@ public abstract class Winkel implements TeBetalenBelasting {
     private int omzet;
     private Classificatie classificatie;
 
-    public Winkel(String naam, String vestigingsplaats, String sector, int omzet) {
+    public Winkel(String naam, String vestigingsplaats, String sector, int omzet) throws SectorMisMatchException {
         this(naam, vestigingsplaats, sector, omzet, Classificatie.KLEIN);
     }
 
-    public Winkel(String naam, String vestigingsplaats, String sector, int omzet, Classificatie classificatie) {
+    public Winkel(String naam, String vestigingsplaats, String sector, int omzet, Classificatie classificatie) throws SectorMisMatchException {
         setNaam(naam);
         setVestigingsplaats(vestigingsplaats);
         setSector(sector);
@@ -36,7 +36,7 @@ public abstract class Winkel implements TeBetalenBelasting {
         this.vestigingsplaats = vestigingsplaats;
     }
 
-    private void setSector(String sector) {
+    private void setSector(String sector) throws SectorMisMatchException {
         Pattern p1 = Pattern.compile("^[A-Z]{3}\\d{4}$");
         Pattern p2 = Pattern.compile("^[a-z]{5}\\d{2,}$");
 
@@ -45,7 +45,6 @@ public abstract class Winkel implements TeBetalenBelasting {
         } else if (p1.matcher(sector).find() || p2.matcher(sector).find()){
             this.sector = sector;
         } else {
-            System.out.println("fout");
             throw new SectorMisMatchException();
         }
     }
@@ -83,7 +82,4 @@ public abstract class Winkel implements TeBetalenBelasting {
     public String toString() {
         return String.format("%s %s; in %s; sector = %s, omzet = %d", getClass().getSimpleName(), naam, vestigingsplaats, sector, omzet);
     }
-
-    @Override
-    public abstract double geefJaarlijkseBelasting();
 }

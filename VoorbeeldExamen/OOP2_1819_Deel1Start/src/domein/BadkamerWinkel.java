@@ -1,5 +1,7 @@
 package domein;
 
+import exceptions.SectorMisMatchException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,14 +10,13 @@ public class BadkamerWinkel extends Winkel {
 
     private List<DoucheBak> voorraad;
 
-    public BadkamerWinkel(String naam, String vestigingsplaats, String sector, int omzet, Classificatie classificatie) {
-        super(naam, vestigingsplaats, sector, omzet, classificatie);
-        voorraad = new ArrayList<>();
+    public BadkamerWinkel(String naam, String vestigingsplaats, String sector, int omzet, Classificatie classificatie) throws SectorMisMatchException {
+        this(naam, vestigingsplaats, sector, omzet, classificatie, new ArrayList<>());
     }
 
-    public BadkamerWinkel(String naam, String vestigingsplaats, String sector, int omzet, Classificatie classificatie, List<DoucheBak> voorraad) {
-        this(naam, vestigingsplaats, sector, omzet, classificatie);
-        this.voorraad = voorraad;
+    public BadkamerWinkel(String naam, String vestigingsplaats, String sector, int omzet, Classificatie classificatie, List<DoucheBak> voorraad) throws SectorMisMatchException {
+        super(naam, vestigingsplaats, sector, omzet, classificatie);
+        setVoorraad(voorraad);
     }
 
     public List<DoucheBak> getVoorraad(){
@@ -27,17 +28,23 @@ public class BadkamerWinkel extends Winkel {
     }
 
     public DoucheBak[] geefDoucheBakkenMetLengteEnBreedteEnMateriaal(int deLengte, int deBreedte, String materiaal){
-        return null;
+        List<DoucheBak> gevonden = new ArrayList<>();
+        for (DoucheBak doucheBak: voorraad){
+            if (doucheBak.getLengte() >= deLengte && doucheBak.getBreedte() >= deBreedte && doucheBak.getMateriaal().equals(materiaal)) {
+                gevonden.add(doucheBak);
+            }
+        }
+        return gevonden.toArray(new DoucheBak[gevonden.size()]);
     }
 
     @Override
     public String toString() {
-        String[] strings = new String[voorraad.size()+1];
-        strings[0] = super.toString();
-        for (int i = 1; i <= voorraad.size(); i++) {
-            strings[i] = voorraad.get(i).toString();
+        String res = super.toString();
+        int i = 0;
+        for (DoucheBak doucheBak: voorraad){
+            res += String.format("%nDouchebak %d: %s", (i++ +1), doucheBak);
         }
-        return Arrays.toString(strings);
+        return res;
     }
 
     public void voegDoucheBakAanVoorraadToe(DoucheBak doucheBak){
