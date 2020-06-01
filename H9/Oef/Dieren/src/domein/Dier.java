@@ -2,7 +2,7 @@ package domein;
 
 import java.time.Year;
 
-public class Dier {
+public abstract class Dier {
 
     private final int geboortejaar;
 
@@ -21,9 +21,7 @@ public class Dier {
         return geefHuidigeJaar()-geboortejaar;
     }
 
-    public int berekenLeeftijdVolgensMens(){
-        return 0;
-    }
+    public abstract int berekenLeeftijdVolgensMens();
 
     @Override
     public String toString(){

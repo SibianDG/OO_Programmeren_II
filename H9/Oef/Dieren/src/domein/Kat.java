@@ -2,7 +2,6 @@ package domein;
 
 public class Kat extends Dier{
 
-
     public Kat(int geboortejaar) {
         super(geboortejaar);
     	controleerGeboortejaar(geboortejaar);
