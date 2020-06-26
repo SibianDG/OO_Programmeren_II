@@ -1,0 +1,14 @@
+Harten;1
+Harten;Vrouw
+Ruiten;Heer
+Klaveren;Vrouw
+Harten;7
+Harten;3
+Ruiten;Boer
+Ruiten;4
+Schoppen;2
+Klaveren;9
+Klaveren;10
+Schoppen;Heer
+Schoppen;10
+Schoppen;8
